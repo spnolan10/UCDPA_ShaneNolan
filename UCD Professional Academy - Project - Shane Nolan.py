@@ -25,3 +25,7 @@
 
 # 6) Generate Valuable Insights
     # 5 insights from the visualization. [2]
+
+import pandas as pd
+
+
