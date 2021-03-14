@@ -1,32 +1,49 @@
-#UCD Professional Academy - Project Submission - Shane Nolan
+# UCD Professional Academy - Project Submission
 
 # 1) Real World Scenario
-    # Project should use a real world dataset and include a reference of their source in the report [1]
+    # Data imported from Kaggle as CSV file
 
-# 2) Importing data
-    # Your project should make use of one or more of the following, [1]
-    # Relational Database or API or Web Scraping
-    # Import a CSV file into a Pandas DataFrame.
+# 2) Importing Data
+
+import pandas as pd
+
+country_vaccinations = pd.read_csv("country_vaccinations.csv")
+print(country_vaccinations.head(), country_vaccinations.shape, country_vaccinations.info())
+
+country_population = pd.read_csv("Country_populations.csv")
+print(country_population.head(), country_population.shape, country_population.info())
+
 
 # 3) Analyzing data
-    # Your project should include sorting, indexing, grouping. [1]
-    # Replace missing values or dropping duplicates. [1]
-    # Slicing, loc or iloc. [1]
-    # Looping, iterrows [1]
-    # Merge dataframes [1]
 
-# 4) Python
-    # Use functions to create reusable code. [1]
-    # Numpy. [1]
-    # Dictionary or Lists. [1]
+#Subsetting Country Vaccination data to focus on number of people vaccinated with single dose on latest date
+pop_vaccinated = country_vaccinations[["Country Name", "Country Code", "date", "people_vaccinated", "vaccines"]]
+print(pop_vaccinated.head())
 
-# 5) Visualize
-    # Seaborn, Matplotlib [2]
+# Groupby - sum of people vaccinated per country
+vaccinated_per_country = pop_vaccinated.groupby("Country Name")["people_vaccinated"].max()
+print(vaccinated_per_country.head())
 
-# 6) Generate Valuable Insights
-    # 5 insights from the visualization. [2]
+# Replace Missing or Drop Duplicates
 
-Test 1
+# Slicing of Country Population Data to exclude incomplete 2020 population data
+pop_country = country_population.loc[:, "Country Name": "2019"]
 
+# Subsetting Country Population data to focus on 2019 population
+pop_2019 = pop_country[["Country Name", "Country Code", "2019"]]
+print(pop_2019.head())
 
+# Merging of Vaccination (total people vaccinated per country) data with Population data (2019 population data)
+vaccinated_per_pop = pop_2019.merge(vaccinated_per_country, on='Country Name')
+print(vaccinated_per_pop.head())
 
+#Create a list of EU countries
+EU_Countries = {"Austria", "Belgium", "Bulgaria", "Croatia", "Cyprus", "Czechia", "Denmark",
+                "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Ireland", "Italy",
+                "Latvia", "Lithuania", "Luxembourg", "Malta", "Netherlands", "Poland", "Portugal",
+                "Romania", "Slovakia", "Slovenia", "Spain", "Sweden"}
+print(EU_Countries)
+
+#Subsetting merged Vaccination and population data by EU Countries
+EU_Vaccinated_per_pop = vaccinated_per_pop[vaccinated_per_pop['Country Name'].isin(EU_Countries)]
+print(EU_Vaccinated_per_pop.head())
