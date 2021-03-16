@@ -5,7 +5,6 @@
 # Country Vaccinations data imported from Kaggle as CSV file
 # Country Populations data imported from World Bank as CSV file
 
-
 # 2) Importing Data
 
 import pandas as pd
@@ -16,7 +15,6 @@ print(country_vaccinations.head(), country_vaccinations.shape, country_vaccinati
 
 country_population = pd.read_csv("Country_populations.csv")
 print(country_population.head(), country_population.shape, country_population.info())
-
 
 # 3) Analyzing data
 
@@ -62,7 +60,6 @@ print(EU_vs_Rest_of_World2.head())
 EU_Vaccinated_per_pop = vaccinated_per_pop[vaccinated_per_pop['Country Name'].isin(EU_Countries)]
 EU_Ranked = EU_Vaccinated_per_pop.sort_values('Percentage_of_Pop_Vaccinated', ascending= False)
 print(EU_Ranked.head())
-
 
 # 5) Visualize Data
 
