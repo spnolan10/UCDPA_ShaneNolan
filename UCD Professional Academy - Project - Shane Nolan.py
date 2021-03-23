@@ -83,8 +83,8 @@ plt.show()
 
 # 6) Data Insights
 
-# 1) On average, approx. 7% of the EU population has been vaccinated vs approx. 2% in the rest of the world.
-# 2) In the EU, Hungary and Malta have the highest percentage of their population vaccinated. Malta has vaccinated approx. 14% of its population.
+# 1) On average, approx. 7% of the EU population has been vaccinated with a single dose vs approx. 2% in the rest of the world.
+# 2) In the EU, Hungary and Malta have the highest percentage of their population vaccinated with a single dose. Malta has vaccinated approx. 14% of its population.
 # 3) In the EU, Latvia and Bulgaria have the lowest percentage of their population vaccinated with a vaccination rate of approx. 3.75%.
 # 4) Ireland is the 7th best performing country in the EU for the rollout of Covid-19 Vaccines.
-# 5) Ireland has vaccinated approx 7.5% of its population which is just above the EU average.
+# 5) Ireland has vaccinated approx 7.5% of its population with a single dose which is just above the EU average.
